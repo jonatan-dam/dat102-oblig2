@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		long sum = 0;
-		int n = 5;
+		int n = 10;
 		
 		
 		for(int i = 0; i < n; i++) {
@@ -17,7 +17,7 @@ public class Main {
 			
 			long startMillis = System.currentTimeMillis();
 			
-			SortArray.insertionSort(tabell);
+			SortArray.mergeSort(tabell);
 			
 		
 			long kjoreTid = System.currentTimeMillis() - startMillis;
@@ -40,8 +40,12 @@ public class Main {
 	}
 	
 	public static Integer[] createRandom(){
+		int forste = 32000;
+		int andre = 64000;
+		int tredje = 128000;
 		
-		Integer[] tabell = new Integer[100000];
+		
+		Integer[] tabell = new Integer[tredje];
 		int n = tabell.length;
 		Random tilfeldig = new Random();
 		
