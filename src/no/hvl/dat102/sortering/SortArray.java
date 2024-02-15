@@ -1,29 +1,62 @@
 package no.hvl.dat102.sortering;
 
+import java.util.Arrays;
 
 public class SortArray {
 	
 	
 	public static <T extends Comparable<? super T>> void insertionSort(T[] a) {
-		insertionSort(a, 0, a.length - 1);
-	}
+		int n = a.length;
+		
+		// Minsteførst algo for å se hvordan det påvirker tiden
+        int minsteIndex = 0;
+        for (int i = 0; i < a.length; i++) {
+        	if(a[i].compareTo(a[minsteIndex]) < 0) {
+        		minsteIndex = i;
+        	}
+        }
+        
+        if (minsteIndex != 0) {
+        	T temp = a[0];
+        	a[0] = a[minsteIndex];
+        	a[minsteIndex] = temp;
+        }
+        System.out.println(Arrays.toString(a));
+        
+		for (int i = 1; i < n - 1; i += 2) {
+	        
+	        T minste = a[i];
+	        T største = a[i + 1];
 
-	public static <T extends Comparable<? super T>> void insertionSort(T[] a, int forste, int siste) {
+	        
+	        int j;
+	        for (j = i + 1; j < n; ++j) {
+	            T tempMinste = a[j];
+	            int k = j - 1;
 
-		for (int i = forste + 1; i <= siste; i++) {
+	            
+	            while (k >= 0 && a[k].compareTo(tempMinste) > 0) {
+	                a[k + 1] = a[k];
+	                k--;
+	            }
 
-			T temp = a[i];
-			int j = i - 1;
+	            a[k + 1] = tempMinste;
+	        }
 
-			
-			while (j >= forste && temp.compareTo(a[j]) < 0) {
-				a[j + 1] = a[j];
-				j--;
-			}
+	        
+	        for (j = i + 2; j < n; ++j) {
+	            T tempStørste = a[j];
+	            int k = j - 1;
 
-			a[j + 1] = temp;
-		}
+	            
+	            while (k >= 0 && a[k].compareTo(tempStørste) > 0) {
+	                a[k + 1] = a[k];
+	                k--;
+	            }
 
+	            a[k + 1] = tempStørste;
+	        }
+	    }
 	}
 	
 	public static <T extends Comparable<? super T>> void minsteForst(T[] a) {

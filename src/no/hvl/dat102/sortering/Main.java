@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Main {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {  
+	
 		long sum = 0;
 		int n = 10;
 		
@@ -14,10 +14,9 @@ public class Main {
 			Integer[] tabell = createRandom();
 			
 			
-			
 			long startMillis = System.currentTimeMillis();
 			
-			SortArray.mergeSort(tabell);
+			SortArray.insertionSort(tabell);
 			
 		
 			long kjoreTid = System.currentTimeMillis() - startMillis;
@@ -42,7 +41,7 @@ public class Main {
 	public static Integer[] createRandom(){
 		int forste = 32000;
 		int andre = 64000;
-		int tredje = 128000;
+		int tredje = 12000;
 		
 		
 		Integer[] tabell = new Integer[tredje];
